@@ -3,6 +3,7 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
 @Disabled // GitHub doesn't have a SQL Server instance
@@ -14,18 +15,8 @@ class SqlServerIntegrationTest {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 
-	//	@BeforeEach
-	//	void createTable() {
-	//		jdbcTemplate.execute("create table person" + //
-	//				"(" + //
-	//				"first_name  varchar(100)," + //
-	//				"second_name varchar(100)" + //
-	//				")"+ //
-	//				"Go" //
-	//		);
-	//	}
-
 	@Test
+	@Sql("/init-sql-server.sql")
 	void insertValues() {
 		// act
 		jdbcTemplate.update(INSERT_INTO_PERSON, "Donald", "Duck");

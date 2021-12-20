@@ -1,8 +1,8 @@
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
 @SpringJUnitConfig(H2Configuration.class)
@@ -13,17 +13,8 @@ class H2IntegrationTest {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 
-	@BeforeEach
-	void createTable() {
-		jdbcTemplate.execute("create table person" + //
-				"(" + //
-				"first_name  varchar(100)," + //
-				"second_name varchar(100)" + //
-				")" //
-		);
-	}
-
 	@Test
+	@Sql("/init-h2.sql")
 	void insertValues() {
 		// act
 		jdbcTemplate.update(INSERT_INTO_PERSON, "Donald", "Duck");
