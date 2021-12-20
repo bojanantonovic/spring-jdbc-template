@@ -12,7 +12,7 @@ public class Main {
         dataSource.setDriverClassName(DRIVER_CLASS_NAME);
         dataSource.setUrl("jdbc:sqlserver://localhost");
         dataSource.setUsername("SA");
-        dataSource.setPassword("Bojan123");
+        dataSource.setPassword("MyPass@word");
 
         var jdbcTemplate = new JdbcTemplate(dataSource);
 
