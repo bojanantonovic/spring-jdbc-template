@@ -20,7 +20,8 @@ class SqlServerIntegrationTest {
 	//				"(" + //
 	//				"first_name  varchar(100)," + //
 	//				"second_name varchar(100)" + //
-	//				")" //
+	//				")"+ //
+	//				"Go" //
 	//		);
 	//	}
 
