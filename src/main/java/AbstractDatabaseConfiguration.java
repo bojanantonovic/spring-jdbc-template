@@ -35,7 +35,7 @@ public abstract class AbstractDatabaseConfiguration {
 	}
 
 	@Bean
-	JdbcTemplate jdbcTemple(final DataSource dataSource) {
+	JdbcTemplate jdbcTemplate(final DataSource dataSource) {
 		return new JdbcTemplate(dataSource);
 	}
 
