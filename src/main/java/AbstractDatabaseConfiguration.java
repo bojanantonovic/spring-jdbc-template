@@ -1,7 +1,9 @@
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.sql.DataSource;
 
@@ -28,7 +30,17 @@ public abstract class AbstractDatabaseConfiguration {
 	}
 
 	@Bean
+	public PlatformTransactionManager txManager(final DataSource dataSource){
+		return new DataSourceTransactionManager(dataSource);
+	}
+
+	@Bean
 	JdbcTemplate jdbcTemple(final DataSource dataSource) {
 		return new JdbcTemplate(dataSource);
+	}
+
+	@Bean
+	PersonPersisterService createPersonPersister() {
+		return new PersonPersisterService();
 	}
 }
